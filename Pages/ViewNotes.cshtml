@@ -1,0 +1,60 @@
+﻿@page
+@model AgenciaTurismo.Web.Pages.ViewNotesModel
+@{
+    ViewData["Title"] = "Sistema de Anotações";
+}
+
+<div class="container mt-4">
+    <h2>Sistema de Anotações Internas</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">Criar Nova Anotação</div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Título do Arquivo</label>
+                            <input asp-for="TituloNota" class="form-control" placeholder="Ex: Lembrete_Reuniao" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Conteúdo da Nota</label>
+                            <textarea asp-for="ConteudoNota" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Salvar em .txt</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5>Arquivos na pasta /wwwroot/files/</h5>
+
+            @if (Model.ArquivosDisponiveis.Any())
+            {
+                <div class="list-group mb-4">
+                    @foreach (var arquivo in Model.ArquivosDisponiveis)
+                    {
+                        <a asp-page="/ViewNotes" asp-route-lerArquivo="@arquivo"
+                           class="list-group-item list-group-item-action @(Model.NotaSelecionadaNome == arquivo ? "active" : "")">
+                             @arquivo
+                        </a>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted">Nenhum arquivo .txt encontrado.</p>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.NotaSelecionadaConteudo))
+            {
+                <div class="alert alert-warning">
+                    <h5 class="alert-heading border-bottom pb-2">Lendo: @Model.NotaSelecionadaNome</h5>
+                    <p class="mb-0 mt-3" style="white-space: pre-wrap;">@Model.NotaSelecionadaConteudo</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

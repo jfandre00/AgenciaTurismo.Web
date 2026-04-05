@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Cálculo de Desconto (Delegate)";
+}
+
+<div class="container mt-4">
+    <h2>Simulador de Desconto para Pacotes</h2>
+    <hr />
+
+    <div class="card shadow-sm" style="max-width: 400px;">
+        <div class="card-body">
+            <form method="post" asp-controller="Delegates" asp-action="Desconto">
+                <div class="mb-3">
+                    <label class="form-label">Informe o valor do pacote (R$):</label>
+                    <input type="number" step="0.01" name="precoEntrada" class="form-control" required placeholder="Ex: 1500.00" />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Calcular Desconto</button>
+            </form>
+        </div>
+    </div>
+
+    @if (ViewBag.PrecoComDesconto != null)
+    {
+        <div class="alert alert-success mt-4" style="max-width: 400px;">
+            <p class="mb-1"><strong>Preço Original:</strong> R$ @ViewBag.PrecoOriginal.ToString("N2")</p>
+            <p class="mb-0 fs-5"><strong>Com Desconto (10%):</strong> R$ @ViewBag.PrecoComDesconto.ToString("N2")</p>
+        </div>
+    }
+</div>

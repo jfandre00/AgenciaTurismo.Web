@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Evento de Capacidade";
+}
+
+<div class="container mt-4">
+    <h2>Evento: Limite de Capacidade</h2>
+    <p class="text-muted">Simulador de reservas para acionar eventos C# (Tarefa 4).</p>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">Nova Reserva</div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Delegates" asp-action="AlertaCapacidade">
+                        <div class="mb-3">
+                            <label class="form-label">Capacidade Máxima do Pacote:</label>
+                            <input type="number" name="capacidadeMaxima" class="form-control" value="10" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Reservas Já Existentes:</label>
+                            <input type="number" name="reservasAtuais" class="form-control" placeholder="Tente um número igual ou maior que a capacidade" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100">Tentar Reservar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            @if (ViewBag.Sucesso != null)
+            {
+                <h4>Resultado:</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item"><strong>Pacote:</strong> @ViewBag.Pacote</li>
+                    <li class="list-group-item"><strong>Capacidade Máxima:</strong> @ViewBag.Capacidade</li>
+                    <li class="list-group-item"><strong>Ocupação Atual:</strong> @ViewBag.Atuais</li>
+                </ul>
+
+                @if (ViewBag.Sucesso)
+                {
+                    <div class="alert alert-success fs-5">
+                        Reserva efetuada com sucesso! Há vagas disponíveis.
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger fs-5 border-danger">
+                        Falha na reserva. <br />
+                        <small class="text-dark fw-bold">O Evento foi disparado com a mensagem:</small><br />
+                        <em>"@ViewBag.AlertaCapturado"</em>
+                    </div>
+                    <p class="text-muted mt-2"><small>(Estará na saída (Visual Studio) p/ ver o Console.WriteLine)</small></p>
+                }
+            }
+        </div>
+    </div>
+</div>

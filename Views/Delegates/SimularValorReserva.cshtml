@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Simulação de Reserva (Func)";
+}
+
+<div class="container mt-4">
+    <h2>Simulador de Reserva (Uso de Func)</h2>
+    <hr />
+
+    <div class="card shadow-sm" style="max-width: 500px;">
+        <div class="card-body">
+            <form method="post" asp-controller="Delegates" asp-action="SimularValorReserva">
+
+                <div class="mb-3">
+                    <label class="form-label">Quantidade de Participantes:</label>
+                    <input type="number" name="quantidadeParticipantes" class="form-control" min="1" required placeholder="Ex: 4" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Preço do Pacote por pessoa (R$):</label>
+                    <input type="number" step="0.01" name="precoPacote" class="form-control" required placeholder="Ex: 1200.50" />
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Calcular Total</button>
+            </form>
+        </div>
+    </div>
+
+    @if (ViewBag.ValorFinal != null)
+    {
+        <div class="alert alert-info mt-4" style="max-width: 500px;">
+            <h5 class="alert-heading">Resumo da Simulação:</h5>
+            <ul class="list-unstyled mb-0">
+                <li><strong>Participantes:</strong> @ViewBag.Quantidade pessoas</li>
+                <li><strong>Valor individual:</strong> R$ @ViewBag.PrecoPacote.ToString("N2")</li>
+                <li><hr /></li>
+                <li class="fs-5 text-primary"><strong>Valor Total: R$ @ViewBag.ValorFinal.ToString("N2")</strong></li>
+            </ul>
+        </div>
+    }
+</div>

@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial - AT";
+}
+
+<style>
+    /* Trava a tela e centraliza o conteúdo */
+    body {
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #f8f9fa;
+    }
+
+    .container-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    /* Permite rolagem apenas se a tela for muito baixa (ex: celular) */
+    @@media (max-height: 700px) {
+        body {
+            overflow: auto;
+            height: auto;
+        }
+    }
+</style>
+
+<div class="text-center mt-3">
+    <h1 class="display-4 fw-bold text-dark">Sistema de Agência de Turismo</h1>
+    <p class="lead">Gestão Estruturada de Pacotes, Clientes e Reservas</p>
+    <p class="text-secondary">Desenvolvido por <strong>André L. M. Ferreira</strong></p>
+</div>
+
+<div class="container container-main">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-primary shadow border-0">
+                <div class="card-header bg-primary text-white text-center fw-bold">Parte 1: Delegates & Eventos</div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a href="/Delegates/Desconto" class="list-group-item list-group-item-action">Tarefa 1: Cálculo de Desconto</a>
+                        <a href="/Delegates/SimularReservaLog" class="list-group-item list-group-item-action">Tarefa 2: Logs Multicast</a>
+                        <a href="/Delegates/SimularValorReserva" class="list-group-item list-group-item-action">Tarefa 3: Cálculo com Func</a>
+                        <a href="/Delegates/AlertaCapacidade" class="list-group-item list-group-item-action">Tarefa 4: Evento de Capacidade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-success shadow border-0">
+                <div class="card-header bg-success text-white text-center fw-bold">Parte 2: Razor Pages</div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a asp-page="/CreatePacoteTuristico" class="list-group-item list-group-item-action">Tarefa 5/6: Cadastros & Validação</a>
+                        <a href="/PacoteDetails/123" class="list-group-item list-group-item-action">Tarefa 7: Detalhes via Rota</a>
+                        <a asp-page="/ViewNotes" class="list-group-item list-group-item-action fw-bold text-success">Tarefa 8: Sistema de Notas (I/O)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-dark shadow border-0">
+                <div class="card-header bg-dark text-white text-center fw-bold">Parte 3 & 4: Gestão de Dados (EF Core)</div>
+                <div class="card-body">
+                    <p class="card-text small text-center text-muted mb-3">CRUDs completos com Scaffolding e Soft Delete.</p>
+
+                    <div class="d-grid gap-2">
+                        <a asp-controller="PacotesTuristicos" asp-action="Index" class="btn btn-outline-dark btn-sm text-start">Gerenciar Pacotes</a>
+                        <a asp-controller="Clientes" asp-action="Index" class="btn btn-outline-dark btn-sm text-start">Gerenciar Clientes</a>
+                        <a asp-controller="Destinos" asp-action="Index" class="btn btn-outline-dark btn-sm text-start">Gerenciar Destinos</a>
+                        <a asp-controller="Reservas" asp-action="Index" class="btn btn-primary btn-sm text-start mt-2 fw-bold">Central de Reservas</a>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <span class="badge bg-warning text-dark">Acesso Restrito (Login)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-auto py-3 text-center border-top bg-white">
+    <p class="text-muted mb-0">Desenvolvido para o AT de C# - André L. M. Ferreira &copy; 2026</p>
+</footer>

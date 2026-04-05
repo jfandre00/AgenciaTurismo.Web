@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Multicast Delegate de Logs";
+}
+
+<div class="container mt-4">
+    <h2>Log de Operações (Multicast Delegate)</h2>
+    <hr />
+
+    <div class="alert alert-info">
+        <h5>Ação Executada:</h5>
+        <p>@ViewBag.MensagemOriginal</p>
+    </div>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-dark text-white">
+            Resultados do Disparo (3 métodos executados simultaneamente)
+        </div>
+        <div class="card-body">
+            <ul>
+                <li><strong>Console:</strong> Verifique a janela de Saída do Visual Studio.</li>
+                <li><strong>Arquivo:</strong> Um arquivo <code>logs_sistema.txt</code> foi criado (ou atualizado) na pasta <code>wwwroot</code>.</li>
+                <li><strong>Memória:</strong> Veja os registros armazenados abaixo:</li>
+            </ul>
+
+            <div class="bg-light p-3 border rounded">
+                <h6>Registros em Memória:</h6>
+                @if (ViewBag.LogsMemoria != null)
+                {
+                    foreach (var log in ViewBag.LogsMemoria)
+                    {
+                        <div class="text-success font-monospace">@log</div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

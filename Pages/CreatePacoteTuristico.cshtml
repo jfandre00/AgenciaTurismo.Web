@@ -1,0 +1,49 @@
+﻿@page
+@model AgenciaTurismo.Web.Pages.CreatePacoteTuristicoModel
+@{
+    ViewData["Title"] = "Cadastrar Pacote";
+}
+
+<div class="container mt-4">
+    <h2>Cadastrar Pacote Turístico</h2>
+    <hr />
+
+    @if (Model.CadastradoComSucesso)
+    {
+        <div class="alert alert-success">
+            Pacote cadastrado com sucesso! (Simulação)
+        </div>
+    }
+    else
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Pacote.Titulo" class="form-label">Título do Pacote</label>
+                <input asp-for="Pacote.Titulo" class="form-control" />
+                <span asp-validation-for="Pacote.Titulo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Pacote.CapacidadeMaxima" class="form-label">Capacidade Máxima</label>
+                <input asp-for="Pacote.CapacidadeMaxima" type="number" class="form-control" />
+                <span asp-validation-for="Pacote.CapacidadeMaxima" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Pacote.Preco" class="form-label">Preço (R$)</label>
+                <input asp-for="Pacote.Preco" type="text" step="0.01" class="form-control" />
+                <span asp-validation-for="Pacote.Preco" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 border p-3 rounded bg-light">
+                <h5 class="text-secondary">Configurações de Agendamento</h5>
+                <label asp-for="Pacote.DataInicio" class="form-label">Data de Início da Viagem</label>
+
+                <input asp-for="Pacote.DataInicio" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+                <span asp-validation-for="Pacote.DataInicio" class="text-danger fw-bold"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar Pacote</button>
+        </form>
+    }
+</div>

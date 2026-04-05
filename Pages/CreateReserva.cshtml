@@ -1,0 +1,27 @@
+﻿@page
+@model AgenciaTurismo.Web.Pages.CreateReservaModel
+@{
+    ViewData["Title"] = "Criar Reserva";
+}
+
+<div class="container mt-4">
+    <h2>Efetuar Nova Reserva</h2>
+    <hr />
+
+    @if (Model.CadastradoComSucesso)
+    {
+        <div class="alert alert-success">Reserva efetuada com sucesso!</div>
+    }
+    else
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="NovaReserva.NomeCliente" class="form-label">Nome do Cliente</label>
+                <input asp-for="NovaReserva.NomeCliente" class="form-control" />
+                <span asp-validation-for="NovaReserva.NomeCliente" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Confirmar Reserva</button>
+        </form>
+    }
+</div>

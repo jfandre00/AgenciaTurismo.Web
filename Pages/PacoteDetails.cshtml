@@ -1,0 +1,32 @@
+﻿@page "{id:int}"
+@model AgenciaTurismo.Web.Pages.PacoteDetailsModel
+@{
+    ViewData["Title"] = "Detalhes do Pacote";
+}
+
+<div class="container mt-4">
+    <h2>Detalhes do Pacote Turístico</h2>
+    <hr />
+
+    <div class="card shadow-sm border-primary" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white fs-5">
+            Pacote #@Model.Pacote.Id - @Model.Pacote.Titulo
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Data de Início:
+                    <span class="badge bg-info text-dark rounded-pill fs-6">@Model.Pacote.DataInicio.ToString("dd/MM/yyyy")</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Capacidade Máxima:
+                    <span class="fw-bold">@Model.Pacote.CapacidadeMaxima pessoas</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Valor por Pessoa:
+                    <span class="fw-bold text-success fs-5">R$ @Model.Pacote.Preco.ToString("N2")</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
